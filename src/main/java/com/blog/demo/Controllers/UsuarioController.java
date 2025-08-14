@@ -1,14 +1,13 @@
-package Controllers;
+package com.blog.demo.Controllers;
 
-import Entities.Usuario;
-import Repositories.UsuarioRepository;
+import com.blog.demo.Entities.Usuario;
+import com.blog.demo.Repositories.UsuarioRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/usuarios")
-
 public class UsuarioController {
 
     public UsuarioRepository usuarioRepository;
@@ -19,23 +18,21 @@ public class UsuarioController {
 
 
     @PostMapping
-
     public Usuario criarUsuario(@RequestBody Usuario usuario){
         this.usuarioRepository.save(usuario);
         return usuario;
     }
 
     @GetMapping
-
     public List<Usuario> listar(){
         return this.usuarioRepository.findAll();
     }
 
 
-    @GetMapping
+    @GetMapping("/{idUsuario}")
 
-    public List<Usuario> exibirDetalhes(){
-        return this.usuarioRepository.findById(Usuario);
+    public List<Usuario> exibirDetalhes(@PathVariable Integer idUsuario){
+        return (List<Usuario>) this.usuarioRepository.findById(idUsuario).get();
     }
 
 

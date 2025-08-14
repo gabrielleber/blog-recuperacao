@@ -1,4 +1,4 @@
-package Entities;
+package com.blog.demo.Entities;
 
 import jakarta.persistence.*;
 
@@ -19,7 +19,7 @@ public class Usuario {
     private Date dataCadastro;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
-    private List<UsuarioPostagem> UsuarioPostagem = new ArrayList<>();
+    private List<Postagem> postagens = new ArrayList<>();
 
 
     public Integer getId() {
@@ -54,11 +54,11 @@ public class Usuario {
         this.dataCadastro = dataCadastro;
     }
 
-    public List<UsuarioPostagem> getUsuarioPostagem() {
-        return UsuarioPostagem;
+    public List<Postagem> getUsuarioPostagem() {
+        return postagens;
     }
 
-    public void setUsuarioPostagem(List<UsuarioPostagem> usuarioPostagem) {
-        UsuarioPostagem = usuarioPostagem;
+    public void setUsuarioPostagem(List<Postagem> usuarioPostagem) {
+//        UsuarioPostagem = usuarioPostagem;
     }
 }
